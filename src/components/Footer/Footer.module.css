@@ -1,0 +1,15 @@
+@import "../../vars.css";
+
+.container {
+  flex: 1;
+}
+
+.text {
+  padding-top: 20px;
+  text-align: center;
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: var(--font-roboto);
+}

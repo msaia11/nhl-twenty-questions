@@ -1,0 +1,169 @@
+@import "../../vars.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.card {
+  flex: 1;
+  position: relative; 
+  overflow: hidden; 
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 2px;
+  opacity: 0; /* start invisible */
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.title {
+  text-align: center;
+}
+
+.hint {
+  text-align: center;
+}
+
+.input {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px auto;
+  width: 200px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggestions li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+.userInput {
+  text-align: center;
+  color: red;
+  margin-bottom: 5px;
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  max-width: 80%;
+  position: relative;
+}
+
+.modalMessage {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.playerImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 10px 0;
+}
+
+.playerName {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.modalButton {
+  display: block;
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modalButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.playerImageHint {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; 
+  display: block;          /* Makes the image behave like a block element */
+  margin: 20px auto;       /* Centers the image horizontally */
+}
+
+.correctGuess {
+  color: green;     
+  font-weight: bold; 
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.wrongGuess {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.viewResultsButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.viewResultsButton:hover {
+  background-color: #45a049;
+}
