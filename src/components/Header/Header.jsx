@@ -12,7 +12,7 @@ export const Header = () => {
           Chel Guesser
         </h1>
         <p className={styles.description}>
-          See how many hints you need to guess the NHL Player
+          See how many hints you need to guess the NHL player
         </p>
       </div>
       <img src={getImageUrl("header/mainLogo.png")} alt="Logo" className={styles.mainLogo}/>

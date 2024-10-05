@@ -57,7 +57,6 @@ export const Game = () => {
               var playerData = playerDocSnap.data();
               var playerIdData = playerData.id;
               setPlayerId(playerIdData);
-              //alert("player ID data " + playerIdData); 
 
               //Fetch player Data
               fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://api-web.nhle.com/v1/player/" + playerIdData + "/landing"), {
@@ -73,7 +72,7 @@ export const Game = () => {
                 const myData = JSON.parse(data.contents);
                 setHintArray(fillHintArray(myData));
               })
-              .catch(err => alert("Catch Error " + err));
+              .catch(err => alert("Error Loading: " + err + ". Please try reloading the page."));
             }
           })
         }
@@ -135,10 +134,19 @@ export const Game = () => {
           inputRefs[nextIndex].current.focus();
         }
 
-        //Scroll into view after the card becomes visible
-        if (lastRevealedCardRef.current) {
-          lastRevealedCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
+         // Scroll into view only if on mobile
+        if (lastRevealedCardRef.current && window.innerWidth < 830) {
+          // Define a constant for keyboard height (adjust if necessary)
+          const keyboardHeight = 200; // or a more accurate value based on device
+          const scrollPosition = lastRevealedCardRef.current.getBoundingClientRect().top + window.scrollY - keyboardHeight;
+
+          // Scroll to position, adjusting for the keyboard
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth',
+          });
         }
+
       }, 50); // Small delay to allow transition
     }
 
@@ -165,6 +173,16 @@ export const Game = () => {
                `${firstName} ${lastName}`.startsWith(value);
     });
       setFilteredPlayers(filtered);
+
+       // Scroll to suggestions
+       if (filtered.length > 0) {
+        setTimeout(() => {
+            const suggestionsElement = document.querySelector(`.${styles.suggestions}`);
+            if (suggestionsElement) {
+                suggestionsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 100);
+       }
     }
     else {
       setFilteredPlayers([]);
@@ -177,9 +195,10 @@ export const Game = () => {
 
     // Call handleGuess after updating inputValue
     handleGuess(playerName);
+
   };
 
-  const Modal = ({ message, playerName, playerImage, onClose, hintsUsed, gameOver }) => {
+  const Modal = ({ message, playerName, playerImage, onClose, hintsUsed }) => {
     const handleShare = () => {
       const hintSingOrPlural = (hintsUsed == 1) ? "hint" : "hints";
       const resultText = `Chel Guesser - ${todayString}\n\n` +
@@ -270,7 +289,9 @@ export const Game = () => {
                 {filteredPlayers.length > 0 && (
                   <ul className={styles.suggestions}>
                     {filteredPlayers.map((player, i) => (
-                      <li key={i} onClick={() => handleSuggestionClick(player.name)}>
+                      <li key={i} onClick={() => {
+                        handleSuggestionClick(player.name);
+                    }}>
                         {player.name}
                       </li>
                     ))}

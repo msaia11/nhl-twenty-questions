@@ -36,3 +36,33 @@
   width: 20%;
   z-index: 1;
 }
+
+@media screen and (max-width: 830px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .content {
+    align-items: center;
+  }
+
+  .title {
+    font-size: 72px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    font-family: var(--font-roboto);
+  }
+  
+  .description {
+    font-size: 30px;
+    font-family: var(--color-primary);
+    margin-bottom: 40px;
+  }
+
+  .mainLogo {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    z-index: 1;
+  }
+}

@@ -44,7 +44,8 @@
   list-style-type: none;
   padding: 0;
   margin: 5px auto;
-  width: 200px;
+  width: 90%; /* Set to 90% for responsiveness */
+  max-width: 200px; /* Limit maximum width */
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -167,3 +168,50 @@
 .viewResultsButton:hover {
   background-color: #45a049;
 }
+
+@media screen and (max-width: 830px) {
+  .card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+
+  .input {
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 16px;
+    position: relative;
+    z-index: 1; /* Make sure input stays above the card */
+    margin-top: 5px;
+  margin-bottom: 15px;
+  }
+
+  /* Adjusted Suggestions Dropdown */
+  .suggestions {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px auto;
+    width: 90%; /* Set to 90% for responsiveness */
+    max-width: 200px; /* Limit maximum width */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+

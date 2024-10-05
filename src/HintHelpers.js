@@ -92,7 +92,10 @@ const getTeamsPlayedFor = (data) => {
   var teamList = [];
   data.seasonTotals.forEach(season => {
     if (season.leagueAbbrev == "NHL") {
-      teamList.push(season.teamName.default)
+      const fullTeamName = season.teamName.default.split(' ');
+      //alert("Length: " + fullTeamName.length);
+      const mascot = fullTeamName[fullTeamName.length - 1];
+      teamList.push(mascot);
     }
   })
   const uniqueTeamSet = new Set(teamList);
@@ -115,7 +118,9 @@ const getTeamsPlayedFor = (data) => {
     if (i == uniqueTeamList.length - 1) {
       teamListStr += "and " + uniqueTeamList[i];
     }
-    teamListStr += uniqueTeamList[i] + ", "
+    else {
+      teamListStr += uniqueTeamList[i] + ", "
+    }
   }
   return teamListStr;
 }
@@ -315,6 +320,11 @@ const getTeamNameFromAbbr = (data) => {
       break;
     case "WSH":
       fullName = "Washington Capitals";
+      break;
+
+    //No longer existent franchises
+    case "PHX":
+      fullName = "Phoenix Coyotes";
       break;
   }
   return fullName;
