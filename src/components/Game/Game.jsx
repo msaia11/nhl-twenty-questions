@@ -203,7 +203,7 @@ export const Game = () => {
       const hintSingOrPlural = (hintsUsed == 1) ? "hint" : "hints";
       const resultText = `Chel Guesser - ${todayString}\n\n` +
       `${message.includes("Sorry") ? "I was unable to correctly guess the player." : `I guessed the player with ${hintsUsed} ${hintSingOrPlural}!`}\n` +
-      "Can you beat my score? Give it a try at https://www.chelguesser.netlify.app";
+      "Can you beat my score? Give it a try at https://chelguesser.netlify.app/";
   
       // Copy the result text to clipboard
       navigator.clipboard.writeText(resultText)
