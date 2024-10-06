@@ -187,10 +187,10 @@ export const getPositionFromAbbr = (abbr) => {
     case "C": 
       position = "center";
       break;
-    case "RW":
+    case "R":
       position = "right wing";
       break;
-    case "LF":
+    case "L":
       position = "left wing";
       break;
     case "D":
@@ -211,6 +211,9 @@ export const getCountryFromAbbr = (abbr) => {
       break;
     case "SWE":
       countryName = "Sweden";
+      break;
+    case "AUT":
+      countryName = "Austria";
       break;
   }
   return countryName;
